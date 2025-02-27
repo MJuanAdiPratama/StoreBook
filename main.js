@@ -9,32 +9,52 @@ document.querySelector(".btn-daftar").addEventListener("click", function () {
 
 
 // DROPDOWN CATEGORY
-document.querySelector(".dropdown-btn").addEventListener("click", function () {
-  let dropdownContent = document.querySelector(".dropdown-content");
-  let icon = this.querySelector("i");
+document.addEventListener("DOMContentLoaded", function () {
+  // Dropdown Kategori
+  const dropdownCategory = document.querySelector(".dropdown-btn");
+  const dropdownContent = document.querySelector(".dropdown-content");
+  const dropdownIcon = document.querySelector(".dropdown-btn i");
 
-  dropdownContent.classList.toggle("show"); // Toggle tampilan dropdown
+  // Dropdown Profil
+  const dropdownProfile = document.querySelector(".icon-profile");
+  const dropdownProfileContent = document.querySelector(
+    ".dropdown-content-profile"
+  );
+  const profileIcon = document.querySelector(".icon-profile i.bx-chevron-down");
 
-  // Cek apakah dropdown terbuka atau tertutup, lalu ubah ikon
-  if (dropdownContent.classList.contains("show")) {
-    icon.classList.remove("bx-chevron-down");
-    icon.classList.add("bx-chevron-up");
-  } else {
-    icon.classList.remove("bx-chevron-up");
-    icon.classList.add("bx-chevron-down");
+  // Fungsi toggle untuk kategori
+  if (dropdownCategory && dropdownContent && dropdownIcon) {
+    dropdownCategory.addEventListener("click", function (e) {
+      e.stopPropagation(); // Mencegah event dari bubbling ke window
+      dropdownContent.classList.toggle("show");
+      dropdownIcon.classList.toggle("bx-chevron-up");
+      dropdownIcon.classList.toggle("bx-chevron-down");
+    });
   }
-});
 
-// Tutup Dropdown
-window.addEventListener("click", function (e) {
-  if (!document.querySelector(".dropdown").contains(e.target)) {
-    let dropdownContent = document.querySelector(".dropdown-content");
-    let icon = document.querySelector(".dropdown-btn i");
-
-    dropdownContent.classList.remove("show"); // Tutup dropdown
-    icon.classList.remove("bx-chevron-up");
-    icon.classList.add("bx-chevron-down");
+  // Fungsi toggle untuk profil
+  if (dropdownProfile && dropdownProfileContent && profileIcon) {
+    dropdownProfile.addEventListener("click", function (e) {
+      e.stopPropagation();
+      dropdownProfileContent.classList.toggle("show");
+      profileIcon.classList.toggle("bx-chevron-up");
+      profileIcon.classList.toggle("bx-chevron-down");
+    });
   }
+
+  // Tutup Dropdown jika klik di luar elemen
+  window.addEventListener("click", function (e) {
+    if (!dropdownCategory.contains(e.target)) {
+      dropdownContent.classList.remove("show");
+      dropdownIcon.classList.remove("bx-chevron-up");
+      dropdownIcon.classList.add("bx-chevron-down");
+    }
+    if (!dropdownProfile.contains(e.target)) {
+      dropdownProfileContent.classList.remove("show");
+      profileIcon.classList.remove("bx-chevron-up");
+      profileIcon.classList.add("bx-chevron-down");
+    }
+  });
 });
 // END DROPDOWN CATEGORY
 
@@ -207,32 +227,3 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // END SLIDER BUKU TERLARIS
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Elemen yang akan dipantau
-  const dropdownContent = document.querySelector(".dropdown-content");
-  const cartIcon = document.querySelector(".icon-cart");
-  const productCards = document.querySelectorAll(".book");
-
-  // Fungsi untuk menampilkan alert
-  function showLoginAlert(event) {
-    event.preventDefault();
-    alert("Harus Login Untuk Mengakses Fitur Ini!");
-  }
-
-  // Tambahkan event listener ke dropdown kategori
-  if (dropdownContent) {
-    dropdownContent.addEventListener("click", showLoginAlert);
-  }
-
-  // Tambahkan event listener ke ikon keranjang
-  if (cartIcon) {
-    cartIcon.addEventListener("click", showLoginAlert);
-  }
-
-  // Tambahkan event listener ke setiap kartu produk
-  productCards.forEach((book) => {
-    book.addEventListener("click", showLoginAlert);
-  });
-});

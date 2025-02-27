@@ -95,8 +95,9 @@
   border-radius: 15px;
   font-weight: 500;
 }
-.show {
-  display: block; /* Munculkan dropdown pake javascript */
+.dropdown-content.show,
+.dropdown-content-profile.show {
+  display: block;
 }
 .container-navbar {
   display: flex;
@@ -591,140 +592,86 @@
 .checkbox-container a:hover {
     color: #007bff;
 }
-
 /* LOGIN.HTML */
 
 
-/* Responsive untuk Tablet */
-@media (max-width: 1024px) {
-  .header {
-    padding: 1rem 2rem;
-    gap: 2rem;
-  }
-  
-  .container-navbar {
-    width: 70%;
-    gap: 10px;
-  }
-
-  .container-search input {
-    width: 250px;
-  }
-
-  .container-banner {
-    max-width: 700px;
-  }
-
-  .book-list {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  }
+/* HOMEPAGE.HTML */
+.container-profile {
+    position: relative;
+    display: inline-block;
 }
-
-/* Responsive untuk Mobile */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    padding: 10px 15px;
-    gap: 5px;
-  }
-
-  .container-logoname {
+.dropdown-profile {
+    position: relative;
+    cursor: pointer;
+}
+.icon-profile {
     display: flex;
     align-items: center;
     gap: 8px;
-    justify-content: center;
-  }
-
-  .logo img {
-    width: 40px;
-  }
-
-  .name-store {
-    font-size: 18px;
-  }
-
-  .container-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .container-navbar {
+    font-size: 20px;
+}
+.dropdown-content-profile {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    display: none;
     flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .container-search {
-    width: 100%;
-    max-width: 250px;
-  }
-
-  .container-search input {
-    width: 100%;
-    padding: 8px 10px 8px 30px;
-    font-size: 14px;
-  }
-
-  .container-button {
+    z-index: 999;
+}
+.content-profile {
     display: flex;
-    flex-direction: row;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .container-button .btn-masuk,
-  .container-button .btn-daftar {
-    width: 100px;
-    padding: 8px;
-    font-size: 14px;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-  }
-
-  .icon-cart {
-    font-size: 18px;
-    padding: 8px;
-  }
-
-  .dropdown-content {
-    top: 50px; 
-  }
-
-  .container-banner {
-    max-width: 90%;
-  }
-
-  .slider {
-    width: 100%;
-  }
-
-  .book-list {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
 }
-
-/* Responsive untuk Layar Kecil (HP Kecil) */
-@media (max-width: 480px) {
-  .name-store {
-    font-size: 16px;
-  }
-
-  .container-search input {
-    width: 100%;
-  }
-
-  .book {
-    width: 100%;
-    height: auto;
-  }
-
-  .book img {
-    height: 200px;
-  }
+.content-profile i {
+    font-size: 50px;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 50%;
 }
+.dropdown-user {
+    font-weight: bold;
+    margin-top: 8px;
+}
+.dropdown-email {
+    font-size: 14px;
+    color: gray;
+}
+.dropdown-content-profile a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    transition: background 0.2s;
+}
+.dropdown-content-profile a:hover {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+.keluar-akun {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+.keluar-akun i {
+    margin-right: 8px;
+}
+.dropdown-profile:hover .dropdown-content-profile {
+    display: flex;
+}
+/* HOMEPAGE>HTML */
