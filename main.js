@@ -1,3 +1,13 @@
+// Mengarahkan ke from login dan register
+document.querySelector(".btn-masuk").addEventListener("click", function () {
+  window.location.href = "login.html"; // Arahkan ke login.html
+});
+
+document.querySelector(".btn-daftar").addEventListener("click", function () {
+  window.location.href = "register.html"; // Arahkan ke register.html
+});
+
+
 // DROPDOWN CATEGORY
 document.querySelector(".dropdown-btn").addEventListener("click", function () {
   let dropdownContent = document.querySelector(".dropdown-content");
@@ -27,7 +37,6 @@ window.addEventListener("click", function (e) {
   }
 });
 // END DROPDOWN CATEGORY
-
 
 // SLIDER BANNER
 document.addEventListener("DOMContentLoaded", function () {
@@ -104,22 +113,26 @@ document.addEventListener("DOMContentLoaded", function () {
     nextSlide();
     autoSlide = setInterval(nextSlide, 3000); // Restart auto-slide setelah geser manual
   });
-  
+
   // Solusi untuk masalah dengan header
   const prevBtn = document.querySelector(".prev");
   const nextBtn = document.querySelector(".next");
   const header = document.querySelector("header"); // Sesuaikan dengan selector header Anda
-  
+
   // Jika tidak menggunakan tag <header>, gunakan selector kelas header Anda
-  // const header = document.querySelector(".header"); 
-  
+  // const header = document.querySelector(".header");
+
   function checkButtonVisibility() {
     // Mendapatkan posisi slider relatif terhadap viewport
     const sliderRect = slider.getBoundingClientRect();
     const headerRect = header.getBoundingClientRect();
-    
+
     // Jika header menutupi slider atau slider berada di luar viewport
-    if (headerRect.bottom > sliderRect.top || sliderRect.bottom < 0 || sliderRect.top > window.innerHeight) {
+    if (
+      headerRect.bottom > sliderRect.top ||
+      sliderRect.bottom < 0 ||
+      sliderRect.top > window.innerHeight
+    ) {
       prevBtn.style.opacity = "0";
       nextBtn.style.opacity = "0";
       prevBtn.style.pointerEvents = "none";
@@ -131,19 +144,18 @@ document.addEventListener("DOMContentLoaded", function () {
       nextBtn.style.pointerEvents = "auto";
     }
   }
-  
+
   // Tambahkan transition di CSS untuk tombol
   prevBtn.style.transition = "opacity 0.3s ease";
   nextBtn.style.transition = "opacity 0.3s ease";
-  
+
   // Panggil fungsi saat scroll
   window.addEventListener("scroll", checkButtonVisibility);
-  
+
   // Panggil sekali pada saat load untuk set status awal
   checkButtonVisibility();
 });
 // END SLIDER BANNER
-
 
 // SLIDER BUKU TERLARIS
 document.addEventListener("DOMContentLoaded", function () {
@@ -195,3 +207,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // END SLIDER BUKU TERLARIS
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Elemen yang akan dipantau
+  const dropdownContent = document.querySelector(".dropdown-content");
+  const cartIcon = document.querySelector(".icon-cart");
+  const productCards = document.querySelectorAll(".book");
+
+  // Fungsi untuk menampilkan alert
+  function showLoginAlert(event) {
+    event.preventDefault();
+    alert("Harus Login Untuk Mengakses Fitur Ini!");
+  }
+
+  // Tambahkan event listener ke dropdown kategori
+  if (dropdownContent) {
+    dropdownContent.addEventListener("click", showLoginAlert);
+  }
+
+  // Tambahkan event listener ke ikon keranjang
+  if (cartIcon) {
+    cartIcon.addEventListener("click", showLoginAlert);
+  }
+
+  // Tambahkan event listener ke setiap kartu produk
+  productCards.forEach((book) => {
+    book.addEventListener("click", showLoginAlert);
+  });
+});
